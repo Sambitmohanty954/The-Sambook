@@ -1,8 +1,14 @@
-<% @posts.each do |post| %>
-<div class ="post_wrapper">
+
+
+<% if @posts.empty? %>
+	<p>categories have not been added yet </p>
+<% else %>
+	<% @posts.each do |post| %>
+	<div class ="post_wrapper">
 	<h2 class="title"><%= link_to post.title, post %></h2>
 	<p class="date"><%= post.created_at.strftime(":%B, %d, %Y") %> </p>
-</div>
-
+	<p><%= truncate(post.body, length:50) %></p>
+	</div>
+	<% end %>
 <% end %>
-<%= link_to "Add Post" , new_category_path ,target: "_self" %>
+<%= link_to "Add Post" , new_post_path ,target: "_self" %>
