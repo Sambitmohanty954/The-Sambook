@@ -4,6 +4,8 @@
 <%= form_for :post, url: posts_path do |f| %>
 <h3> Errors: </h3>
 <% if @post.errors.any? %>
+<div id="errors">
+	<h2><%= pluralize(@post.errors.count,"error")%> Prevented this post from saving %></h2>
 <ul>
 	<% @post.errors.full_messages.each do |msg| %>
 		<li> <%= msg %> </li>
